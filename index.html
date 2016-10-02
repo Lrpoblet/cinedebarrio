@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<title>Cine de Barrio</title>
+
+<!--JQuery-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<!--Angular-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
+
+<!--webfont-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+<!--CSS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+
+<!--JS-->
+
+<script src="js/controladores/peliculasControladores.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</head>
+
+<!--Establecemos con la directiva ng-app el nombre de la App-->
+<body ng-app="peliculasApp">
+
+<!--Creamos una directiva propia para facilitar el mantenimiento de la barra de navegación-->
+	<barra-navegacion></barra-navegacion>
+	  
+<!--Con la directiva ng-view indicamos donde se colocarán las distintas vistas del proyecto-->
+	<section class="ordenacion fondo" ng-view></section>
+
+<!--Creamos un footer en el que irán los datos del copyright-->
+	<footer class="pie">
+
+		<p class="container2">&copy; 2016 Designed and coded by Alicia, Lara and Paloma</p> 
+    
+	</footer>
+  
+</body>
+</html>		

@@ -1,0 +1,43 @@
+
+<table class=" col-lg-offset-3 text-center">
+		<!--Cabecera-->
+	<thead>	
+	<!-- Creación de un ng-click para que cambie el sentido de la columna en sentido ascendente o descendente.  También aplicamos un ng-show para que nos muestre el glyphicon en aquella columna que estemos seleccionando.-->	
+	
+		<td class="cabecera"></td>
+		<td  ng-click="criterio.columna = 'title' ; criterio.sentido = !criterio.sentido">
+			<label class="subrayad">Title</label>
+			<span ng-show="criterio.columna == 'title' && criterio.sentido == false" class="glyphicon glyphicon-sort-by-alphabet"></span>
+			<span ng-show="criterio.columna == 'title' && criterio.sentido == true" class="glyphicon glyphicon-sort-by-alphabet-alt"></span>
+		</td>
+		<td  ng-click="criterio.columna = 'vote_average' ; criterio.sentido = !criterio.sentido">
+			<label class="subrayad">Rating</label>
+			<span ng-show="criterio.columna == 'vote_average' && criterio.sentido == false" class="glyphicon glyphicon-sort-by-order"></span>
+			<span ng-show="criterio.columna == 'vote_average' && criterio.sentido == true" class="glyphicon glyphicon-sort-by-order-alt"></span>
+
+		</td>
+	</thead>
+	<tbody>
+		<!--Cuerpo de la tabla. Creamos un bucle con ng-repeat que nos permite recoger los valores de json y devolverlos por pantalla-->
+		<tr ng-repeat="pelicula in peliculas | orderBy:criterio.columna:criterio.sentido">
+			
+			<td><a href="#/title/{{ pelicula.id}}"><img src="{{ 'http://image.tmdb.org/t/p/w185/' + pelicula.poster_path }}"></td>
+			<td><a href="#/title/{{ pelicula.id}}">{{ pelicula.title}}</td>
+			<td class="puntos">{{ pelicula.vote_average}}</td>
+
+		</tr>
+	</tbody>
+</table>
+
+ 	<!--Paginacion-->
+<footer class="pag">
+ <ul class="pagination">
+  <li class="active">
+  <a href="#/bpage/{{ tit }}/{{ page - 1 }}" ng-show='page > 1'><</a>
+  </li>
+  <li class="active">
+     <a href="#/bpage/{{ tit }}/{{ page + 1 }}" ng-show='page < totalPages'>></a>
+   </li>
+ </ul>
+ </footer>
+

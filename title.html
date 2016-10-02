@@ -1,0 +1,21 @@
+<!--Con sintaxis moustache seleccionamos cada uno de los parametros que queremos obtener-->
+
+<div class="row">
+	<form class="form-vertical">
+		<div class="form-group col-md-3">
+			<img src="{{ pelicula.poster_path }}">
+		</div>
+		<div class="form-group col-md-3">
+			<label>Title</label>
+			<input type="text" disabled value="{{ pelicula.title }}" class="form-control">
+		</div>
+		<div class="form-group col-md-3">
+			<label>Overview</label>
+			<textarea disabled class="form-control" rows="12">{{ pelicula.overview }}</textarea>
+		</div>
+		<div class="form-group col-md-3">
+			<label>Rating</label>
+			<input type="text" disabled value="{{ pelicula.vote_average }}" class="form-control">
+		</div>
+	</form>
+</div>

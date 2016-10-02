@@ -1,0 +1,50 @@
+<!-- Creación de dos radio-button para elegir el orden ascendente o descendente en función del orden alfabético o la puntuación que presenta la tabla-->
+<div class="col-md-offset-3">
+	<label class="text-center">Order by title</label>
+	<label>
+		<!--ng value: devuelve un booleano para realizar o no la acción.
+			ng-model: accede al scope usando esta directiva y definiendo un dato en él.
+			ng-checked: devuelve un booleano y sirve para indicar una variable del scope donde se puedad deducir si el elemento debe estar marcado o no.
+		-->
+	    <input type="radio" name="ordenacion" ng-value="false" ng-model="criterio.title" ng-checked="true">
+	    Ascending
+	</label>
+	<label>
+	    <input type="radio" name="ordenacion" ng-value="true" ng-model="criterio.title">
+	    Descending
+	</label>
+</div>
+
+<br>
+<br>
+<table class=" col-lg-offset-3 text-center ">
+	<!-- Cabecera Tabla-->
+	<thead>
+		<td ></td>
+		<td ><label class="subrayad" >Title</label></td>
+		<td ><label class="subrayad">Rating</label></td>
+	</thead>
+	<!--Cuerpo Tabla. Creamos un bucle con ng-repeat que nos permite recoger los valores de json y devolverlos por pantalla-->
+	<tbody>
+		<tr ng-repeat="pelicula in peliculas | orderBy:'title':criterio.title">
+			
+			<td><a href="#/title/{{ pelicula.id}}"><img src="{{ 'http://image.tmdb.org/t/p/w185/' + pelicula.poster_path }}"></a></td>
+			<td><a href="#/title/{{ pelicula.id}}">{{ pelicula.title}}</a></td>
+			<td class="puntos">{{ pelicula.vote_average}}</td>
+
+		</tr>
+	</tbody>
+</table>
+
+ 	<!--Paginacion-->
+<footer class="pag">
+ 	<ul class="pagination">
+  		<li class="active">
+  			<a href="#/page/{{ page - 1 }}" ng-show='page > 1'><</a>
+  		</li>
+  		<li class="active">
+     		<a href="#/page/{{ page + 1 }}" ng-show='page < 1000'>></a>
+   		</li>
+	</ul>
+ </footer>
+

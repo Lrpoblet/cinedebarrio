@@ -1,0 +1,29 @@
+<header>	
+	<div class="container">
+		<div class="logo">
+			<a href="#/"><img src="images/logo (2).png" alt=""></a>
+		</div>
+
+		 <div class="cssmenu">
+			<ul id="nav">
+				<li><a href="#/" title="home">Home</a></li>
+				<li><a href="#/todasLasPeliculas" title="lista">A-Z List</a></li>
+             	<li><a href="#/genres" title="genres">Genres</a></li>
+          		<li><a href="#/contact" title="contact">Contact</a></li>
+			</ul>
+		 </div>
+
+		<!--BUSCADOR-->	
+		<!--Asignamos el ng-controller que va a contener la funcionalidad del buscador-->
+		<div id="buscador" ng-controller="buscarCtrl">
+			<!--ng-model: accede al scope usando esta directiva y definiendo un dato en él
+			Se lo pasamos como parámetro a las funciones buscarPelis y buscarEnter-->
+			<!--ng-keypress: sirve para capturar el evento de la tecla que pulse el usuario y asignarle al enter la función de buscar-->
+			<input class="campodetxt" type="text" ng-model="buscar.title" ng-keypress="buscarEnter($event,buscar.title)" placeholder=" Buscar título...">
+			<!--Con ng-click le asignamos al botón su funcionalidad-->
+			<button class="btn-buscador" ng-click="buscarPelis(buscar.title)">Go</button>
+		</div>
+	</div>
+				
+</header>
+
