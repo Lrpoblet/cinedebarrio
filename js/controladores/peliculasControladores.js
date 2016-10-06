@@ -6,7 +6,7 @@ var Ctrl = (function(){
 		/*$rootScope nos permite crear una variable global para page, con el objetivo de que el resto de controladores tengan acceso*/
 		$rootScope.page = 1
 		/*El controlador recoge los fatos con una llamada AJAX a través del servicion $http*/
-		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e')
+		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&language=es')
 			/*Con los datos recibidos de la api se inicializa la variable peliculas del modelo*/
 			.success(function(peliculas){
 				/*Utilizamos $scope para conectar la variable con la vista
@@ -23,7 +23,7 @@ var Ctrl = (function(){
 	};
 	var _pageCtrl = function($scope, $rootScope,$http,$log,$routeParams,$window){
 		/*En el $routeParams le metemos el valor de la variable que hemos asignado en app.js*/
-		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&page='+ $routeParams.page)
+		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&page='+ $routeParams.page + '&language=es')
 			.success(function(peliculas){
 				$scope.page = Number($routeParams.page)
 				$scope.peliculas = peliculas.results;
@@ -41,7 +41,7 @@ var Ctrl = (function(){
 		
 	var _titleCtrl = function($scope,$routeParams,$http,$log,$window){
 			
-		$http.get('http://api.themoviedb.org/3/movie/' + $routeParams.title + '?api_key=4584ae721cb020ce65a4bd25368ec31e')
+		$http.get('http://api.themoviedb.org/3/movie/' + $routeParams.title + '?api_key=4584ae721cb020ce65a4bd25368ec31e&language=es')
 			
 			.success(function(pelicula){
 				pelicula.poster_path = 'http://image.tmdb.org/t/p/w185' + pelicula.poster_path; 
@@ -61,7 +61,7 @@ var Ctrl = (function(){
 
 	var _genre_idsCtrl = function($scope,$routeParams,$http,$log,$window){
 			
-		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&with_genres=' + $routeParams.genre_ids) 
+		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&with_genres=' + $routeParams.genre_ids +'&language=es') 
 			
 			.success(function(peliculas){ 
 				$scope.peliculas = peliculas.results;
@@ -120,7 +120,7 @@ var Ctrl = (function(){
 }
 
 	var _buscarPeliCtrl = function($scope,$http,$routeParams,$log,$rootScope){
-	$http.get('http://api.themoviedb.org/3/search/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&query=' + $routeParams.titulo) 
+	$http.get('http://api.themoviedb.org/3/search/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&query=' + $routeParams.titulo + '&language=es') 
 			
 			.success(function(peliculas){ 
 				$scope.page = $rootScope.page
@@ -136,7 +136,7 @@ var Ctrl = (function(){
 		}
 	var _bpageCtrl = function($scope, $rootScope,$http,$log,$routeParams,$window){
 	
-		$http.get('http://api.themoviedb.org/3/search/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&query=' + $routeParams.titulo + '&page=' + $routeParams.id )
+		$http.get('http://api.themoviedb.org/3/search/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&query=' + $routeParams.titulo + '&page=' + $routeParams.id + '&language=es')
 			.success(function(peliculas){
 				$scope.page = Number($routeParams.id)
 				$scope.tit = $rootScope.tit;
@@ -152,7 +152,7 @@ var Ctrl = (function(){
 
 	var _gpageCtrl = function($scope, $rootScope,$http,$log,$routeParams,$window){
 		
-		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&with_genres=' + $routeParams.genre_ids + '&page=' + $routeParams.id )
+		$http.get('http://api.themoviedb.org/3/discover/movie?api_key=4584ae721cb020ce65a4bd25368ec31e&with_genres=' + $routeParams.genre_ids + '&page=' + $routeParams.id + '&language=es')
 			.success(function(peliculas){
 				$scope.page = Number($routeParams.id)
 				$scope.gen = $routeParams.genre_ids;
